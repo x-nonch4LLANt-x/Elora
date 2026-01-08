@@ -1,0 +1,1 @@
+import{w as c}from"./B3VlpfkE.js";function d(){const{subscribe:a,update:e}=c([]);return{subscribe:a,add:(o,r="info",t=3e3)=>{const s=Date.now();e(i=>[...i,{id:s,message:o,type:r,duration:t}]),setTimeout(()=>{e(i=>i.filter(n=>n.id!==s))},t)},remove:o=>{e(r=>r.filter(t=>t.id!==o))}}}const m=d();export{m as t};

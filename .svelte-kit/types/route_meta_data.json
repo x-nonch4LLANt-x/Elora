@@ -1,0 +1,48 @@
+{
+	"/": [
+		"src/routes/+page.server.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/about": [
+		"src/routes/+layout.server.ts"
+	],
+	"/accessories": [
+		"src/routes/+layout.server.ts"
+	],
+	"/cart": [
+		"src/routes/+layout.server.ts"
+	],
+	"/catalog": [
+		"src/routes/+layout.server.ts"
+	],
+	"/checkout": [
+		"src/routes/+layout.server.ts"
+	],
+	"/contact": [
+		"src/routes/+layout.server.ts"
+	],
+	"/dashboard": [
+		"src/routes/+layout.server.ts"
+	],
+	"/products/[id]": [
+		"src/routes/products/[id]/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/reviews/[productId]": [
+		"src/routes/reviews/[productId]/+page.ts",
+		"src/routes/+layout.server.ts"
+	],
+	"/settings": [
+		"src/routes/+layout.server.ts"
+	],
+	"/settings/orders": [
+		"src/routes/+layout.server.ts"
+	],
+	"/settings/profile": [
+		"src/routes/+layout.server.ts"
+	],
+	"/wishlist": [
+		"src/routes/+layout.server.ts"
+	]
+}
