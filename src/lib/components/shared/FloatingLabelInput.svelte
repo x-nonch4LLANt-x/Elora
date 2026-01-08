@@ -9,11 +9,13 @@
     } = $props();
 
     let focused = $state(false);
+    let id = rest.id || "input-" + Math.random().toString(36).substring(2, 9);
 </script>
 
 <div class="relative pt-2">
     <div class="relative">
         <input
+            {id}
             {type}
             bind:value
             {required}
@@ -27,6 +29,7 @@
             placeholder={label}
         />
         <label
+            for={id}
             class="absolute left-4 transition-all duration-200 pointer-events-none
             {focused || value
                 ? '-top-2.5 text-xs bg-white dark:bg-slate-900 px-1'

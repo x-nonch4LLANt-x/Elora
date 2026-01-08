@@ -7,10 +7,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["hdmi-cable.png","logo.png","mini-projector.png","outdoor-projector.png","projector-screen.png","robots.txt","smart-projector.png","tripod-stand.png"]),
-	mimeTypes: {".png":"image/png",".txt":"text/plain"},
+	assets: new Set(["hdmi-cable.png","logo.png","manifest.json","mini-projector.png","outdoor-projector.png","projector-screen.png","robots.txt","smart-projector.png","tripod-stand.png"]),
+	mimeTypes: {".png":"image/png",".json":"application/json",".txt":"text/plain"},
 	_: {
-		client: {start:"_app/immutable/entry/start.YAeKyg_A.js",app:"_app/immutable/entry/app.BBBeo8W1.js",imports:["_app/immutable/entry/start.YAeKyg_A.js","_app/immutable/chunks/Bk70sHby.js","_app/immutable/chunks/D97IuHMQ.js","_app/immutable/chunks/B3VlpfkE.js","_app/immutable/chunks/CYgJF_JY.js","_app/immutable/chunks/Oh7xaASr.js","_app/immutable/chunks/B17Q6ahh.js","_app/immutable/chunks/DdaHFDoq.js","_app/immutable/entry/app.BBBeo8W1.js","_app/immutable/chunks/D97IuHMQ.js","_app/immutable/chunks/p3BVkhEL.js","_app/immutable/chunks/DdaHFDoq.js","_app/immutable/chunks/BnfQKSU9.js","_app/immutable/chunks/CPfwhYki.js","_app/immutable/chunks/B3VlpfkE.js","_app/immutable/chunks/C8Gg-cER.js","_app/immutable/chunks/CLyLYJAi.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.C-XFclEj.js",app:"_app/immutable/entry/app.EGX6lY25.js",imports:["_app/immutable/entry/start.C-XFclEj.js","_app/immutable/chunks/CRh0FF5X.js","_app/immutable/chunks/C1idHNw3.js","_app/immutable/chunks/CljNcLvA.js","_app/immutable/chunks/CYgJF_JY.js","_app/immutable/chunks/C3NHDcnv.js","_app/immutable/chunks/B17Q6ahh.js","_app/immutable/chunks/COV5WMI3.js","_app/immutable/entry/app.EGX6lY25.js","_app/immutable/chunks/PPVm8Dsz.js","_app/immutable/chunks/C1idHNw3.js","_app/immutable/chunks/cO8HySHN.js","_app/immutable/chunks/COV5WMI3.js","_app/immutable/chunks/BscpFD2e.js","_app/immutable/chunks/C9fbpDiD.js","_app/immutable/chunks/D3t8wLcA.js","_app/immutable/chunks/C4POhpH1.js","_app/immutable/chunks/SPHUI4jo.js","_app/immutable/chunks/pNYLpbqL.js","_app/immutable/chunks/CljNcLvA.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -23,7 +23,11 @@ return {
 			__memo(() => import('./nodes/8.js')),
 			__memo(() => import('./nodes/9.js')),
 			__memo(() => import('./nodes/10.js')),
-			__memo(() => import('./nodes/11.js'))
+			__memo(() => import('./nodes/11.js')),
+			__memo(() => import('./nodes/12.js')),
+			__memo(() => import('./nodes/13.js')),
+			__memo(() => import('./nodes/14.js')),
+			__memo(() => import('./nodes/15.js'))
 		],
 		remotes: {
 			
@@ -93,10 +97,38 @@ return {
 				endpoint: null
 			},
 			{
+				id: "/reviews/[productId]",
+				pattern: /^\/reviews\/([^/]+?)\/?$/,
+				params: [{"name":"productId","optional":false,"rest":false,"chained":false}],
+				page: { layouts: [0,], errors: [1,], leaf: 11 },
+				endpoint: null
+			},
+			{
+				id: "/settings",
+				pattern: /^\/settings\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 12 },
+				endpoint: null
+			},
+			{
+				id: "/settings/orders",
+				pattern: /^\/settings\/orders\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 13 },
+				endpoint: null
+			},
+			{
+				id: "/settings/profile",
+				pattern: /^\/settings\/profile\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 14 },
+				endpoint: null
+			},
+			{
 				id: "/wishlist",
 				pattern: /^\/wishlist\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 11 },
+				page: { layouts: [0,], errors: [1,], leaf: 15 },
 				endpoint: null
 			}
 		],

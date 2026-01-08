@@ -216,6 +216,7 @@
                     <button
                         onclick={() =>
                             (notificationsEnabled = !notificationsEnabled)}
+                        aria-label="Toggle notifications"
                         class="relative w-12 h-7 rounded-full transition-colors duration-300 {notificationsEnabled
                             ? 'bg-primary'
                             : 'bg-slate-200 dark:bg-slate-700'}"
@@ -250,6 +251,7 @@
                     </div>
                     <button
                         onclick={() => (locationEnabled = !locationEnabled)}
+                        aria-label="Toggle location"
                         class="relative w-12 h-7 rounded-full transition-colors duration-300 {locationEnabled
                             ? 'bg-primary'
                             : 'bg-slate-200 dark:bg-slate-700'}"

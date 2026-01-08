@@ -36,6 +36,7 @@
         >
             <button
                 onclick={() => (showMobileSearch = false)}
+                aria-label="Close search"
                 class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white"
             >
                 <span class="material-symbols-outlined">arrow_back</span>
@@ -72,6 +73,7 @@
             </h2>
             <button
                 onclick={() => (showMenu = false)}
+                aria-label="Close menu"
                 class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800"
             >
                 <span class="material-symbols-outlined text-[20px]">close</span>
@@ -178,6 +180,7 @@
                             isDark ? "dark" : "light",
                         );
                     }}
+                    aria-label="Toggle dark mode"
                     class="relative w-11 h-6 bg-slate-300 dark:bg-primary rounded-full transition-colors"
                 >
                     <div
@@ -223,6 +226,7 @@
             <button
                 class="text-slate-900 dark:text-white hover:text-primary transition-colors"
                 onclick={() => (showMobileSearch = true)}
+                aria-label="Search"
             >
                 <span class="material-symbols-outlined">search</span>
             </button>
@@ -237,6 +241,7 @@
                 href="/cart"
                 id="cart-icon"
                 class="relative text-slate-900 dark:text-white hover:text-primary transition-colors"
+                aria-label="Cart"
             >
                 <span class="material-symbols-outlined">shopping_cart</span>
                 {#if $cartCount > 0}
@@ -249,6 +254,7 @@
             <button
                 class="text-slate-900 dark:text-white hover:text-primary transition-colors"
                 onclick={() => (showMenu = true)}
+                aria-label="Open menu"
             >
                 <span class="material-symbols-outlined">menu</span>
             </button>

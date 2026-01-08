@@ -1,6 +1,10 @@
-import { b as HYDRATION_START, a as HYDRATION_END, W as STALE_REACTION, X as subscribe_to_store, Y as ELEMENT_PRESERVE_ATTRIBUTE_CASE, Z as ELEMENT_IS_INPUT, _ as ELEMENT_IS_NAMESPACED } from "./utils2.js";
-import { e as escape_html, a as set_ssr_context, b as ssr_context, p as push, c as pop } from "./context.js";
+import { b as HYDRATION_START, a as HYDRATION_END, Z as STALE_REACTION, X as subscribe_to_store, _ as ELEMENT_PRESERVE_ATTRIBUTE_CASE, $ as ELEMENT_IS_INPUT, a0 as ELEMENT_IS_NAMESPACED } from "./utils2.js";
 import { clsx as clsx$1 } from "clsx";
+function lifecycle_outside_component(name) {
+  {
+    throw new Error(`https://svelte.dev/e/lifecycle_outside_component`);
+  }
+}
 const DOM_BOOLEAN_ATTRIBUTES = [
   "allowfullscreen",
   "async",
@@ -37,6 +41,22 @@ function is_boolean_attribute(name) {
 const PASSIVE_EVENTS = ["touchstart", "touchmove"];
 function is_passive_event(name) {
   return PASSIVE_EVENTS.includes(name);
+}
+const ATTR_REGEX = /[&"<]/g;
+const CONTENT_REGEX = /[&<]/g;
+function escape_html(value, is_attr) {
+  const str = String(value ?? "");
+  const pattern = is_attr ? ATTR_REGEX : CONTENT_REGEX;
+  pattern.lastIndex = 0;
+  let escaped = "";
+  let last = 0;
+  while (pattern.test(str)) {
+    const i = pattern.lastIndex - 1;
+    const ch = str[i];
+    escaped += str.substring(last, i) + (ch === "&" ? "&amp;" : ch === '"' ? "&quot;" : "&lt;");
+    last = i + 1;
+  }
+  return escaped + str.substring(last);
 }
 const replacements = {
   translate: /* @__PURE__ */ new Map([
@@ -181,6 +201,7 @@ function to_style(value, styles) {
 }
 const BLOCK_OPEN = `<!--${HYDRATION_START}-->`;
 const BLOCK_CLOSE = `<!--${HYDRATION_END}-->`;
+const EMPTY_COMMENT = `<!---->`;
 let controller = null;
 function abort() {
   controller?.abort(STALE_REACTION);
@@ -206,6 +227,46 @@ Could not resolve \`render\` context.
 https://svelte.dev/e/server_context_required`);
   error.name = "Svelte error";
   throw error;
+}
+var ssr_context = null;
+function set_ssr_context(v) {
+  ssr_context = v;
+}
+function getContext(key) {
+  const context_map = get_or_init_context_map();
+  const result = (
+    /** @type {T} */
+    context_map.get(key)
+  );
+  return result;
+}
+function setContext(key, context) {
+  get_or_init_context_map().set(key, context);
+  return context;
+}
+function get_or_init_context_map(name) {
+  if (ssr_context === null) {
+    lifecycle_outside_component();
+  }
+  return ssr_context.c ??= new Map(get_parent_context(ssr_context) || void 0);
+}
+function push(fn) {
+  ssr_context = { p: ssr_context, c: null, r: null };
+}
+function pop() {
+  ssr_context = /** @type {SSRContext} */
+  ssr_context.p;
+}
+function get_parent_context(ssr_context2) {
+  let parent = ssr_context2.p;
+  while (parent !== null) {
+    const context_map = parent.c;
+    if (context_map !== null) {
+      return context_map;
+    }
+    parent = parent.p;
+  }
+  return null;
 }
 function unresolved_hydratable(key, stack) {
   {
@@ -297,10 +358,10 @@ class Renderer {
    * @param {(renderer: Renderer) => void} fn
    */
   head(fn) {
-    const head = new Renderer(this.global, this);
-    head.type = "head";
-    this.#out.push(head);
-    head.child(fn);
+    const head2 = new Renderer(this.global, this);
+    head2.type = "head";
+    this.#out.push(head2);
+    head2.child(fn);
   }
   /**
    * @param {Array<Promise<void>>} blockers
@@ -422,7 +483,7 @@ class Renderer {
    */
   option(attrs, body, css_hash, classes, styles, flags) {
     this.#out.push(`<option${attributes(attrs, css_hash, classes, styles, flags)}`);
-    const close = (renderer, value, { head, body: body2 }) => {
+    const close = (renderer, value, { head: head2, body: body2 }) => {
       if ("value" in attrs) {
         value = attrs.value;
       }
@@ -430,8 +491,8 @@ class Renderer {
         renderer.#out.push(" selected");
       }
       renderer.#out.push(`>${body2}</option>`);
-      if (head) {
-        renderer.head((child) => child.push(head));
+      if (head2) {
+        renderer.head((child) => child.push(head2));
       }
     };
     if (typeof body === "function") {
@@ -456,8 +517,8 @@ class Renderer {
    */
   title(fn) {
     const path = this.get_path();
-    const close = (head) => {
-      this.global.set_title(head, path);
+    const close = (head2) => {
+      this.global.set_title(head2, path);
     };
     this.child((renderer) => {
       const r = new Renderer(renderer.global, renderer);
@@ -746,13 +807,13 @@ class Renderer {
     for (const cleanup of renderer.#collect_on_destroy()) {
       cleanup();
     }
-    let head = content.head + renderer.global.get_title();
+    let head2 = content.head + renderer.global.get_title();
     let body = content.body;
     for (const { hash, code } of renderer.global.css) {
-      head += `<style id="${hash}">${code}</style>`;
+      head2 += `<style id="${hash}">${code}</style>`;
     }
     return {
-      head,
+      head: head2,
       body,
       hashes: {
         script: renderer.global.csp.script_hashes
@@ -856,6 +917,13 @@ function render(component, options = {}) {
     options
   );
 }
+function head(hash, renderer, fn) {
+  renderer.head((renderer2) => {
+    renderer2.push(`<!--${hash}-->`);
+    renderer2.child(fn);
+    renderer2.push(EMPTY_COMMENT);
+  });
+}
 function attributes(attrs, css_hash, classes, styles, flags = 0) {
   if (styles) {
     attrs.style = to_style(attrs.style, styles);
@@ -935,16 +1003,21 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  attr as a,
+  store_get as a,
   attr_style as b,
   stringify as c,
-  attr_class as d,
+  attr as d,
   ensure_array_like as e,
-  clsx as f,
-  bind_props as g,
-  attributes as h,
+  escape_html as f,
+  attr_class as g,
+  head as h,
   is_passive_event as i,
+  clsx as j,
+  bind_props as k,
+  getContext as l,
+  ssr_context as m,
+  attributes as n,
   render as r,
-  store_get as s,
+  setContext as s,
   unsubscribe_stores as u
 };

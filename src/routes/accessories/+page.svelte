@@ -14,6 +14,7 @@
         tablet: DesktopCatalogPage,
         desktop: DesktopCatalogPage,
     };
+    let ActiveComponent = $derived(Components[$device]);
 </script>
 
-<svelte:component this={Components[$device]} />
+<ActiveComponent />

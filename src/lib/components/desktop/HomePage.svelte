@@ -120,6 +120,7 @@
                     <a
                         href="/products/{product.id}"
                         class="absolute inset-0 z-0 rounded-2xl"
+                        aria-label="View {product.name}"
                     ></a>
 
                     <div

@@ -1,6 +1,5 @@
-import { s as store_get, e as ensure_array_like, a as attr, u as unsubscribe_stores } from "../../../chunks/index2.js";
+import { a as store_get, e as ensure_array_like, d as attr, f as escape_html, u as unsubscribe_stores } from "../../../chunks/index2.js";
 import { a as cart, b as cartTotal } from "../../../chunks/cart.js";
-import { e as escape_html } from "../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;

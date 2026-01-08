@@ -1,8 +1,7 @@
-import { s as store_get, e as ensure_array_like, a as attr, c as stringify, u as unsubscribe_stores } from "../../../chunks/index2.js";
+import { a as store_get, f as escape_html, e as ensure_array_like, d as attr, c as stringify, u as unsubscribe_stores } from "../../../chunks/index2.js";
 import { w as wishlist } from "../../../chunks/wishlist.js";
 import { p as products } from "../../../chunks/products.js";
 import "../../../chunks/cart.js";
-import { e as escape_html } from "../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;
@@ -17,7 +16,7 @@ function _page($$renderer, $$props) {
       const each_array = ensure_array_like(wishlistItems);
       for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
         let product = each_array[$$index];
-        $$renderer2.push(`<div class="flex gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 relative group"><a${attr("href", `/products/${stringify(product.id)}`)} class="absolute inset-0 z-0 rounded-2xl"></a> <div class="w-24 h-24 shrink-0 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative z-10"><img${attr("src", product.image)}${attr("alt", product.name)} class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal"/></div> <div class="flex flex-col justify-between flex-1 z-10 pointer-events-none"><div class="flex justify-between items-start"><h3 class="font-bold text-slate-900 dark:text-white line-clamp-2 text-sm">${escape_html(product.name)}</h3> <button class="text-red-500 hover:text-red-600 transition-colors pointer-events-auto p-1 -mt-1 -mr-1"><span class="material-symbols-outlined text-[20px] fill-1">favorite</span></button></div> <div class="flex items-center justify-between mt-2"><span class="font-bold text-primary">Rp ${escape_html(product.price.toLocaleString())}</span> <button class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg p-2 flex items-center justify-center active:scale-95 transition-transform pointer-events-auto shadow-lg"><span class="material-symbols-outlined text-[20px]">add_shopping_cart</span></button></div></div></div>`);
+        $$renderer2.push(`<div class="flex gap-4 p-4 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 relative group"><a${attr("href", `/products/${stringify(product.id)}`)} class="absolute inset-0 z-0 rounded-2xl"${attr("aria-label", `View ${stringify(product.name)}`)}></a> <div class="w-24 h-24 shrink-0 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden relative z-10"><img${attr("src", product.image)}${attr("alt", product.name)} class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal"/></div> <div class="flex flex-col justify-between flex-1 z-10 pointer-events-none"><div class="flex justify-between items-start"><h3 class="font-bold text-slate-900 dark:text-white line-clamp-2 text-sm">${escape_html(product.name)}</h3> <button class="text-red-500 hover:text-red-600 transition-colors pointer-events-auto p-1 -mt-1 -mr-1"><span class="material-symbols-outlined text-[20px] fill-1">favorite</span></button></div> <div class="flex items-center justify-between mt-2"><span class="font-bold text-primary">Rp ${escape_html(product.price.toLocaleString())}</span> <button class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg p-2 flex items-center justify-center active:scale-95 transition-transform pointer-events-auto shadow-lg"><span class="material-symbols-outlined text-[20px]">add_shopping_cart</span></button></div></div></div>`);
       }
       $$renderer2.push(`<!--]--></div>`);
     }

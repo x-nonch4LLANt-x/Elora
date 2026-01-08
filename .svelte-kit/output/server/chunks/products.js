@@ -2,138 +2,123 @@ import { d as derived, w as writable } from "./index.js";
 const products = writable([
   {
     id: "1",
-    name: "ELORA Mini Pro",
-    category: "mini",
-    price: 25e3,
+    name: "Elora Anti Light Screen",
+    category: "accessories",
+    price: 6e3,
     rating: 4.8,
-    image: "/mini-projector.png",
-    description: "Compact, bright, and portable. Perfect for bedroom cinema.",
-    gallery: [
-      "/mini-projector.png",
-      "/mini-projector-side.png",
-      // Placeholder
-      "/mini-projector-lifestyle.png"
-      // Placeholder
-    ],
-    features: [
-      "1080p Native Resolution",
-      "300 ANSI Lumens",
-      "Android TV 11 Built-in",
-      "Silent Cooling Technology"
-    ],
+    image: "/projector-screen.png",
+    description: "High-quality 120-inch anti-light screen for vibrant visuals even in ambient light.",
+    gallery: ["/projector-screen.png"],
+    features: ["120 inches", "Anti-Light Material", "Wide Viewing Angle"],
     specs: {
-      "Brightness": "300 ANSI Lumens",
-      "Resolution": "1920 x 1080 (Full HD)",
-      "Contrast Ratio": "2000:1",
-      "Lamp Life": "30,000 Hours",
-      "Connectivity": "HDMI, USB, WiFi 6, Bluetooth 5.0"
+      "Size": "120 inches",
+      "Material": "Anti-Light Fabric"
     },
-    reviews: [
-      { id: "r1", user: "Sarah K.", rating: 5, comment: "Amazing clarity for such a small device!", date: "2024-02-15" },
-      { id: "r2", user: "Mike D.", rating: 4, comment: "Great value, but the fan is slightly audible in silent scenes.", date: "2024-01-20" }
-    ]
+    reviews: []
   },
   {
     id: "2",
-    name: "Smart Beam 4K",
+    name: "Elora XG projector",
     category: "smart",
-    price: 55e3,
-    rating: 4.9,
+    price: 26e3,
+    rating: 4.5,
     image: "/smart-projector.png",
-    description: "Ultra HD home theater experience with built-in streaming apps.",
-    gallery: [
-      "/smart-projector.png",
-      "/smart-projector-front.png",
-      "/smart-projector-room.png"
-    ],
-    features: [
-      "4K UHD Resolution with HDR10+",
-      "2000 ANSI Lumens",
-      "Dolby Audio Integrated",
-      "Auto Keystone & Focus"
-    ],
+    description: "Versatile 1080p projector with 4K input support, perfect for home cinema.",
+    gallery: ["/smart-projector.png"],
+    features: ["1080p Native (Supports 4K inputs)", "50 to 300 inches projection", "High Brightness"],
     specs: {
-      "Brightness": "2000 ANSI Lumens",
-      "Resolution": "3840 x 2160 (4K UHD)",
-      "Contrast Ratio": "10000:1",
-      "Lamp Life": "50,000 Hours",
-      "Connectivity": "2x HDMI 2.1, 2x USB, Ethernet, WiFi 6E"
+      "Resolution": "1080p (Supports 4K)",
+      "Projection Size": "50 to 300 inches",
+      "Brightness": "High Lumens"
     },
     reviews: [
-      { id: "r1", user: "James W.", rating: 5, comment: "Replaced my TV completely. usage in daylight is fine too.", date: "2024-03-01" }
+      {
+        id: "r1",
+        user: "Wairioko97",
+        rating: 5,
+        comment: "Bought the Elora projector and I can say it's good,now I'm coming for the anti light",
+        date: "2024-05-15"
+      }
     ]
   },
   {
     id: "3",
-    name: "Outdoor Cinema X",
-    category: "outdoor",
-    price: 35e3,
-    rating: 4.7,
-    image: "/outdoor-projector.png",
-    description: "Rugged design with internal battery for camping and backyard movies.",
-    gallery: [
-      "/outdoor-projector.png",
-      "/outdoor-lifestyle-camping.png"
-    ],
-    features: [
-      "Water & Dust Resistant (IPX4)",
-      "4-Hour Battery Life",
-      "Built-in Power Bank",
-      "Bluetooth Speaker Mode"
-    ],
-    specs: {
-      "Brightness": "800 ANSI Lumens",
-      "Resolution": "1080p",
-      "Battery": "15000mAh (4 hours video)",
-      "Connectivity": "USB-C, HDMI, Bluetooth 5.2"
-    },
-    reviews: [
-      { id: "r1", user: "CampingGuy", rating: 5, comment: "The battery life is legit. Watched two movies back to back.", date: "2023-11-12" }
-    ]
-  },
-  {
-    id: "4",
-    name: "ELORA Premium HDMI 2.1",
-    category: "accessories",
-    price: 2500,
-    rating: 4.8,
-    image: "/hdmi-cable.png",
-    description: "Ultra high-speed 4K/8K braided cable with gold-plated connectors.",
-    gallery: ["/hdmi-cable.png"],
-    features: ["48Gbps Bandwidth", "8K@60Hz Support", "Braided Nylon"],
-    specs: { "Length": "2 Meters", "Version": "HDMI 2.1", "Connector": "Gold Plated" },
-    reviews: []
-  },
-  {
-    id: "5",
-    name: 'Pull-Down Projector Screen (100")',
-    category: "accessories",
-    price: 12e3,
-    rating: 4.6,
-    image: "/projector-screen.png",
-    description: "Matte white surface for vibrant colors and wide viewing angles.",
-    gallery: ["/projector-screen.png"],
-    features: ["160° Viewing Angle", "Auto-Lock Mechanism", "Wrinkle-Free Material"],
-    specs: { "Size": "100 Inch Diagonal", "Aspect Ratio": "16:9", "Gain": "1.1" },
-    reviews: []
-  },
-  {
-    id: "6",
-    name: "Professional Aluminum Tripod",
-    category: "accessories",
-    price: 4500,
+    name: "Elora R20",
+    category: "smart",
+    price: 32e3,
     rating: 4.9,
-    image: "/tripod-stand.png",
-    description: "Heavy-duty adjustable stand compatible with all ELORA projectors.",
-    gallery: ["/tripod-stand.png"],
-    features: ["360° Ball Head", "Height Adjustable", "Lightweight Aluminum"],
-    specs: { "Max Height": "1.5 Meters", "Load Capacity": "5kg", "Weight": "1.2kg" },
+    image: "/outdoor-projector.png",
+    description: "Premium Full HD projector for an immersive 200-inch viewing experience.",
+    gallery: ["/outdoor-projector.png"],
+    features: ["200 INCHES Projection", "1080P FULL HD", "Premium Audio"],
+    specs: {
+      "Resolution": "1080P FULL HD",
+      "Max Projection": "200 INCHES",
+      "Connectivity": "HDMI, USB, WiFi"
+    },
     reviews: []
   }
 ]);
 const activeCategory = writable("all");
 const searchQuery = writable("");
 const sortBy = writable("rating");
+function levenshteinDistance(a, b) {
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(
+          matrix[i - 1][j - 1] + 1,
+          matrix[i][j - 1] + 1,
+          matrix[i - 1][j] + 1
+        );
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+}
+function getSearchScore(product, query) {
+  const queryLower = query.toLowerCase();
+  let score = 0;
+  if (product.name.toLowerCase() === queryLower) {
+    score += 100;
+  }
+  if (product.name.toLowerCase().includes(queryLower)) {
+    score += 50;
+  }
+  const nameWords = product.name.toLowerCase().split(" ");
+  for (const word of nameWords) {
+    const distance = levenshteinDistance(word, queryLower);
+    if (distance <= 2 && word.length > 3) {
+      score += 30 - distance * 10;
+    }
+  }
+  if (product.description.toLowerCase().includes(queryLower)) {
+    score += 20;
+  }
+  for (const feature of product.features) {
+    if (feature.toLowerCase().includes(queryLower)) {
+      score += 15;
+    }
+  }
+  for (const [key, value] of Object.entries(product.specs)) {
+    if (key.toLowerCase().includes(queryLower) || value.toLowerCase().includes(queryLower)) {
+      score += 10;
+    }
+  }
+  if (product.category.toLowerCase().includes(queryLower)) {
+    score += 5;
+  }
+  return score;
+}
 const filteredProducts = derived(
   [products, activeCategory, searchQuery, sortBy],
   ([$products, $activeCategory, $searchQuery, $sortBy]) => {
@@ -142,10 +127,12 @@ const filteredProducts = derived(
       filtered = filtered.filter((p) => p.category === $activeCategory);
     }
     if ($searchQuery) {
-      const query = $searchQuery.toLowerCase();
-      filtered = filtered.filter(
-        (p) => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query)
-      );
+      const scoredProducts = filtered.map((product) => ({
+        product,
+        score: getSearchScore(product, $searchQuery)
+      }));
+      filtered = scoredProducts.filter(({ score }) => score > 0).sort((a, b) => b.score - a.score).map(({ product }) => product);
+      return filtered;
     }
     filtered = filtered.sort((a, b) => {
       if ($sortBy === "price-asc") return a.price - b.price;
@@ -158,7 +145,8 @@ const filteredProducts = derived(
 );
 export {
   activeCategory as a,
+  sortBy as b,
   filteredProducts as f,
   products as p,
-  sortBy as s
+  searchQuery as s
 };

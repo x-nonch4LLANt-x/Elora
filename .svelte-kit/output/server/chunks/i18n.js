@@ -1,5 +1,8 @@
 import { d as derived, w as writable } from "./index.js";
-const language = writable("en");
+const getInitialLanguage = () => {
+  return "en";
+};
+const language = writable(getInitialLanguage());
 const translations = {
   en: {
     "nav.home": "Home",

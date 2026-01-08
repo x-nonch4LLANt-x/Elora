@@ -1,6 +1,5 @@
-import { d as attr_class, e as ensure_array_like, c as stringify } from "../../../chunks/index2.js";
+import { f as escape_html, g as attr_class, e as ensure_array_like, c as stringify } from "../../../chunks/index2.js";
 import "../../../chunks/toast.js";
-import { e as escape_html } from "../../../chunks/context.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let user = {

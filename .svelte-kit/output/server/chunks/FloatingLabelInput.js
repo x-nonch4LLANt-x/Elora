@@ -1,5 +1,4 @@
-import { h as attributes, d as attr_class, g as bind_props, c as stringify } from "./index2.js";
-import { e as escape_html } from "./context.js";
+import { n as attributes, d as attr, g as attr_class, f as escape_html, k as bind_props, c as stringify } from "./index2.js";
 function FloatingLabelInput($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let {
@@ -12,8 +11,10 @@ function FloatingLabelInput($$renderer, $$props) {
       $$events,
       ...rest
     } = $$props;
+    let id = rest.id || "input-" + Math.random().toString(36).substring(2, 9);
     $$renderer2.push(`<div class="relative pt-2"><div class="relative"><input${attributes(
       {
+        id,
         type,
         value,
         required,
@@ -25,7 +26,7 @@ function FloatingLabelInput($$renderer, $$props) {
       void 0,
       void 0,
       4
-    )}/> <label${attr_class(`absolute left-4 transition-all duration-200 pointer-events-none ${stringify(value ? "-top-2.5 text-xs bg-white dark:bg-slate-900 px-1" : "top-3.5 text-base")} ${stringify(error ? "text-red-500" : "text-slate-500 dark:text-slate-400")}`)}>${escape_html(label)} `);
+    )}/> <label${attr("for", id)}${attr_class(`absolute left-4 transition-all duration-200 pointer-events-none ${stringify(value ? "-top-2.5 text-xs bg-white dark:bg-slate-900 px-1" : "top-3.5 text-base")} ${stringify(error ? "text-red-500" : "text-slate-500 dark:text-slate-400")}`)}>${escape_html(label)} `);
     if (required) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<span class="text-red-500 ml-0.5">*</span>`);

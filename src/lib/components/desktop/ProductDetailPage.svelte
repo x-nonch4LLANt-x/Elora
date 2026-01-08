@@ -8,7 +8,7 @@
     let { product }: { product: Product } = $props();
 
     let selectedImageIndex = $state(0);
-    let activeTab: "specs" | "features" = "specs";
+    let activeTab = $state<"specs" | "features">("specs");
 
     function addToCart() {
         cart.update((items) => {

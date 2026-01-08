@@ -1766,7 +1766,7 @@ function subscribe_to_store(store, run, invalidate) {
   return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
 }
 export {
-  safe_not_equal as $,
+  ELEMENT_IS_INPUT as $,
   svelte_boundary_reset_onerror as A,
   Batch as B,
   COMMENT_NODE as C,
@@ -1789,13 +1789,13 @@ export {
   mutable_source as T,
   fallback as U,
   noop as V,
-  STALE_REACTION as W,
+  safe_not_equal as W,
   subscribe_to_store as X,
-  ELEMENT_PRESERVE_ATTRIBUTE_CASE as Y,
-  ELEMENT_IS_INPUT as Z,
-  ELEMENT_IS_NAMESPACED as _,
+  run_all as Y,
+  STALE_REACTION as Z,
+  ELEMENT_PRESERVE_ATTRIBUTE_CASE as _,
   HYDRATION_END as a,
-  run_all as a0,
+  ELEMENT_IS_NAMESPACED as a0,
   HYDRATION_START as b,
   HYDRATION_START_ELSE as c,
   get as d,

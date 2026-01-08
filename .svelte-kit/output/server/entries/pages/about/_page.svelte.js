@@ -1,5 +1,4 @@
-import { e as ensure_array_like } from "../../../chunks/index2.js";
-import { e as escape_html } from "../../../chunks/context.js";
+import { e as ensure_array_like, f as escape_html } from "../../../chunks/index2.js";
 function _page($$renderer) {
   $$renderer.push(`<div class="min-h-screen bg-background-light dark:bg-background-dark"><div class="relative overflow-hidden py-20 sm:py-32 bg-primary/5 dark:bg-primary/10"><div class="absolute inset-0 z-0 opacity-30"><div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div> <div class="absolute top-1/2 -left-24 w-72 h-72 bg-secondary/20 rounded-full blur-3xl"></div></div> <div class="container mx-auto px-4 sm:px-6 relative z-10"><div class="max-w-3xl mx-auto text-center"><h1 class="text-4xl sm:text-6xl font-display font-bold text-slate-900 dark:text-white mb-6">We Are <span class="text-primary">Elora Tech</span></h1> <p class="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">Crafting the future of technology with premium electronics
                     and accessories. We believe in quality, innovation, and

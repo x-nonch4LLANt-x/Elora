@@ -1,6 +1,6 @@
 const products = [
   {
-    id: "p1",
+    id: "1",
     name: "ELORA Mini Pro",
     price: 25e3,
     category: "Mini",
@@ -8,7 +8,7 @@ const products = [
     description: "Compact & Bright"
   },
   {
-    id: "p2",
+    id: "2",
     name: "Smart Beam 4K",
     price: 55e3,
     category: "Smart",
@@ -16,7 +16,7 @@ const products = [
     description: "Ultra HD Home"
   },
   {
-    id: "p3",
+    id: "3",
     name: "Outdoor Cinema X",
     price: 45e3,
     category: "Outdoor",

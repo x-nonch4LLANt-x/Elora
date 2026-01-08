@@ -6,9 +6,9 @@
     import MapPicker from "$lib/components/shared/MapPicker.svelte";
     import { toast } from "$lib/stores/toast";
 
-    let step: "shipping" | "payment" | "confirmation" = "shipping";
+    let step = $state<"shipping" | "payment" | "confirmation">("shipping");
 
-    let shippingInfo = {
+    let shippingInfo = $state({
         name: "",
         email: "",
         road: "",
@@ -19,13 +19,13 @@
         lat: -1.286389,
         lng: 36.817223,
         address: "",
-    };
+    });
 
-    let paymentMethod: "mpesa" | "card" | "cod" = "mpesa";
-    let mpesaPhone = "";
-    let cardInfo = { number: "", expiry: "", cvv: "" };
+    let paymentMethod = $state<"mpesa" | "card" | "cod">("mpesa");
+    let mpesaPhone = $state("");
+    let cardInfo = $state({ number: "", expiry: "", cvv: "" });
     let isProcessing = $state(false);
-    let orderId = "";
+    let orderId = $state("");
     let deliveryFee = $state(860);
 
     function formatMoney(amount: number) {
@@ -77,18 +77,26 @@
     }
 </script>
 
-<div class="min-h-screen bg-background-light dark:bg-background-dark py-12 px-6 lg:px-8">
+<div
+    class="min-h-screen bg-background-light dark:bg-background-dark py-12 px-6 lg:px-8"
+>
     <div class="max-w-7xl mx-auto">
         {#if step === "confirmation"}
-            <div class="max-w-2xl mx-auto text-center py-16 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-12" in:fade>
+            <div
+                class="max-w-2xl mx-auto text-center py-16 bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-12"
+                in:fade
+            >
                 <div
                     class="w-24 h-24 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-6 mx-auto"
                 >
-                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-[64px]"
+                    <span
+                        class="material-symbols-outlined text-green-600 dark:text-green-400 text-[64px]"
                         >check_circle</span
                     >
                 </div>
-                <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                <h1
+                    class="text-4xl font-bold text-slate-900 dark:text-white mb-4"
+                >
                     Order Confirmed!
                 </h1>
                 <p class="text-slate-500 mb-8 text-lg">Order ID: {orderId}</p>
@@ -101,7 +109,9 @@
         {:else}
             <!-- Progress Steps -->
             <div class="mb-12">
-                <div class="flex items-center justify-center max-w-2xl mx-auto relative">
+                <div
+                    class="flex items-center justify-center max-w-2xl mx-auto relative"
+                >
                     <div
                         class="absolute left-0 top-1/2 w-full h-1 bg-slate-200 dark:bg-slate-700 -z-10"
                     ></div>
@@ -138,10 +148,14 @@
                             <div
                                 class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
                             >
-                                <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">
+                                <h2
+                                    class="text-xl font-bold text-slate-900 dark:text-white mb-4"
+                                >
                                     Choose Delivery Location
                                 </h2>
-                                <div class="h-[400px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                                <div
+                                    class="h-[400px] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700"
+                                >
                                     <MapPicker
                                         initialLocation={{
                                             lat: shippingInfo.lat,
@@ -157,9 +171,11 @@
                                         class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[20px]"
                                         >info</span
                                     >
-                                    <p class="text-sm text-blue-700 dark:text-blue-300">
-                                        Delivery fee is calculated based on distance from our
-                                        warehouse in Nairobi.
+                                    <p
+                                        class="text-sm text-blue-700 dark:text-blue-300"
+                                    >
+                                        Delivery fee is calculated based on
+                                        distance from our warehouse in Nairobi.
                                     </p>
                                 </div>
                             </div>
@@ -168,10 +184,15 @@
                             <div
                                 class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
                             >
-                                <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">
+                                <h2
+                                    class="text-xl font-bold text-slate-900 dark:text-white mb-6"
+                                >
                                     Delivery Details
                                 </h2>
-                                <form on: submit={handleShippingSubmit} class="space-y-5">
+                                <form
+                                    onsubmit={handleShippingSubmit}
+                                    class="space-y-5"
+                                >
                                     <FloatingLabelInput
                                         label="Place Name"
                                         bind:value={shippingInfo.name}
@@ -237,16 +258,14 @@
                             <div
                                 class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800"
                             >
-                                <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">
+                                <h2
+                                    class="text-xl font-bold text-slate-900 dark:text-white mb-6"
+                                >
                                     Payment Method
                                 </h2>
 
                                 <div class="space-y-4">
-                                    {#each [
-                                        { value: "mpesa", label: "M-Pesa", desc: "Pay via mobile money" },
-                                        { value: "card", label: "Credit/Debit Card", desc: "Visa, Mastercard accepted" },
-                                        { value: "cod", label: "Cash at Pick-up", desc: "Pay on delivery" },
-                                    ] as method}
+                                    {#each [{ value: "mpesa", label: "M-Pesa", desc: "Pay via mobile money" }, { value: "card", label: "Credit/Debit Card", desc: "Visa, Mastercard accepted" }, { value: "cod", label: "Cash at Pick-up", desc: "Pay on delivery" }] as method}
                                         <label
                                             class="flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-all {paymentMethod ===
                                             method.value
@@ -261,10 +280,14 @@
                                                 class="w-5 h-5 text-primary focus:ring-primary"
                                             />
                                             <div class="flex-1">
-                                                <div class="font-bold text-slate-900 dark:text-white">
+                                                <div
+                                                    class="font-bold text-slate-900 dark:text-white"
+                                                >
                                                     {method.label}
                                                 </div>
-                                                <div class="text-sm text-slate-500">
+                                                <div
+                                                    class="text-sm text-slate-500"
+                                                >
                                                     {method.desc}
                                                 </div>
                                             </div>
@@ -303,7 +326,9 @@
                                     </div>
                                 {/if}
 
-                                <div class="flex justify-between items-center mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+                                <div
+                                    class="flex justify-between items-center mt-8 pt-6 border-t border-slate-200 dark:border-slate-700"
+                                >
                                     <button
                                         onclick={() => (step = "shipping")}
                                         class="px-6 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl transition-all active:scale-95"
@@ -321,7 +346,9 @@
                                             ></div>
                                             Processing...
                                         {:else}
-                                            Place Order • {formatMoney($cartTotal + deliveryFee)}
+                                            Place Order • {formatMoney(
+                                                $cartTotal + deliveryFee,
+                                            )}
                                         {/if}
                                     </button>
                                 </div>
@@ -335,7 +362,9 @@
                     <div
                         class="bg-white dark:bg-surface-dark p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 sticky top-24"
                     >
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">
+                        <h3
+                            class="text-lg font-bold text-slate-900 dark:text-white mb-4"
+                        >
                             Order Summary
                         </h3>
 
@@ -361,17 +390,26 @@
                                             Qty: {item.quantity}
                                         </div>
                                     </div>
-                                    <div class="text-sm font-bold text-slate-900 dark:text-white">
-                                        {formatMoney(item.price * item.quantity)}
+                                    <div
+                                        class="text-sm font-bold text-slate-900 dark:text-white"
+                                    >
+                                        {formatMoney(
+                                            item.price * item.quantity,
+                                        )}
                                     </div>
                                 </div>
                             {/each}
                         </div>
 
-                        <div class="space-y-3 py-4 border-t border-slate-200 dark:border-slate-700">
+                        <div
+                            class="space-y-3 py-4 border-t border-slate-200 dark:border-slate-700"
+                        >
                             <div class="flex justify-between text-sm">
-                                <span class="text-slate-600 dark:text-slate-400">Subtotal</span>
-                                <span class="font-medium text-slate-900 dark:text-white"
+                                <span class="text-slate-600 dark:text-slate-400"
+                                    >Subtotal</span
+                                >
+                                <span
+                                    class="font-medium text-slate-900 dark:text-white"
                                     >{formatMoney($cartTotal)}</span
                                 >
                             </div>
@@ -379,7 +417,8 @@
                                 <span class="text-slate-600 dark:text-slate-400"
                                     >Delivery Fee</span
                                 >
-                                <span class="font-medium text-slate-900 dark:text-white"
+                                <span
+                                    class="font-medium text-slate-900 dark:text-white"
                                     >{formatMoney(deliveryFee)}</span
                                 >
                             </div>
@@ -388,7 +427,8 @@
                         <div
                             class="flex justify-between pt-4 border-t border-slate-200 dark:border-slate-700"
                         >
-                            <span class="font-bold text-lg text-slate-900 dark:text-white"
+                            <span
+                                class="font-bold text-lg text-slate-900 dark:text-white"
                                 >Total</span
                             >
                             <span class="font-bold text-xl text-primary"

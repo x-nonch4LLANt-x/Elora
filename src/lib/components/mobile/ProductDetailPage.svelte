@@ -66,7 +66,9 @@
     <div
         class="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 backdrop-blur-xl"
         transition:fade={{ duration: 200 }}
-        onclick={() => (showLightbox = false)}
+        onclick={(e) => {
+            if (e.target === e.currentTarget) showLightbox = false;
+        }}
         role="button"
         tabindex="0"
         onkeydown={(e) => e.key === "Escape" && (showLightbox = false)}
@@ -84,7 +86,6 @@
             src={product.gallery[selectedImageIndex] || product.image}
             alt={product.name}
             class="max-w-full max-h-[90vh] object-contain shadow-2xl rounded-lg"
-            onclick={(e) => e.stopPropagation()}
         />
     </div>
 {/if}

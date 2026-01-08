@@ -1,0 +1,1 @@
+import{w as r}from"./CljNcLvA.js";const i=localStorage.getItem("wishlist"),a=i?JSON.parse(i):[],e=r(a);e.subscribe(s=>{localStorage.setItem("wishlist",JSON.stringify(s))});const n=s=>{e.update(t=>t.includes(s)?t.filter(l=>l!==s):[...t,s])};export{n as t,e as w};
